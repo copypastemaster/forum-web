@@ -2,8 +2,11 @@
   "users": [
     {
       "id": 1,
-      "user": "Hello",
+      "user_name": "Enoch",
       "post": {
+        "screenshot": "",
+        "title": "",
+        "summary": "",
         "repo": "qwe",
         "live_demo": "qwe",
         "comments": [
@@ -11,80 +14,25 @@
           "hellos",
           "huh"
         ],
-        "upvote": 0,
-        "downvote": 0
+        "upvote": 0
       }
     },
     {
       "id": 2,
-      "user": "Dog",
-      "post": [
-        {
-          "repo": "qwes",
-          "live_demo": "zxcasd",
-          "comments": [],
-          "upvote": 0,
-          "downvote": 0
-        }
-      ]
+      "user_name": "Binas",
+      "post": {
+        "screenshot": "",
+        "title": "",
+        "summary": "",
+        "repo": "qwe",
+        "live_demo": "qwe",
+        "comments": [
+          "qweasdasd",
+          "hellosasdzxc",
+          "huhzxczxczxc"
+        ],
+        "upvote": 0
+      }
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "message": "Lorem ipsum"
-    },
-    {
-      "message": "hahahaha tanga ka pala e",
-      "id": 2
-    },
-    {
-      "message": "hahaha angas puta",
-      "id": 3
-    },
-    {
-      "message": "sheesh!",
-      "id": 4
-    },
-    {
-      "message": "hahha",
-      "id": 5
-    },
-    {
-      "message": "",
-      "id": 6
-    },
-    {
-      "message": "",
-      "id": 7
-    },
-    {
-      "message": "haha",
-      "id": 8
-    },
-    {
-      "message": "wtf",
-      "id": 9
-    },
-    {
-      "message": "qweqwe",
-      "id": 10
-    },
-    {
-      "message": "qweqweqwe",
-      "id": 11
-    },
-    {
-      "message": "",
-      "id": 12
-    },
-    {
-      "message": "zxc",
-      "id": 13
-    },
-    {
-      "message": "asd",
-      "id": 14
-    }
-  ]
+  ] 
 }

@@ -1,5 +1,5 @@
--- Icons
+## Icons
 - lucide-react
 
--- UI
+## UI
 - shadcn
