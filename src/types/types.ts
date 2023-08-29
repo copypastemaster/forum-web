@@ -10,6 +10,7 @@ type UserPost<S, A, N> = {
 
 
 export interface UserTypes<S, N> {
+    avatar: S,
     id: N
     user_name: S
     post: UserPost<string, string[], number>

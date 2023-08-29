@@ -3,35 +3,55 @@
     {
       "id": 1,
       "user_name": "Enoch",
+      "avatar": "en",
       "post": {
-        "screenshot": "",
-        "title": "",
-        "summary": "",
-        "repo": "qwe",
-        "live_demo": "qwe",
+        "screenshot": "src/assets/web1.jpg",
+        "title": "Car-rental",
+        "summary": "A car rental website. Tried using zustand on a project! Tech stack: React, Tailwind, Zustand",
+        "repo": "github.com.io/car-rental",
+        "live_demo": "github.com.io/car-rental-live",
         "comments": [
-          "qwe",
-          "hellos",
-          "huh"
+          "You're god",
+          "So neat!",
+          "I like your work."
         ],
-        "upvote": 0
+        "upvote": 13232
       }
     },
     {
       "id": 2,
-      "user_name": "Binas",
+      "user_name": "rj_69",
+      "avatar": "rj",
       "post": {
-        "screenshot": "",
-        "title": "",
-        "summary": "",
-        "repo": "qwe",
-        "live_demo": "qwe",
+        "screenshot": "src/assets/web2.avif",
+        "title": "rj-d-great!",
+        "summary": "My first ever website! Please do criticize my work as I continue to improve. All learners, let's study together!",
+        "repo": "github.com.io/rj-d-great",
+        "live_demo": "github.com.io/rj-d-g-reat-live",
         "comments": [
-          "qweasdasd",
-          "hellosasdzxc",
-          "huhzxczxczxc"
+          "What framework did you use on this?",
+          "Good job!",
+          "Let's collab!"
         ],
-        "upvote": 0
+        "upvote": 3
+      }
+    },
+    {
+      "id": 3,
+      "user_name": "jv_23",
+      "avatar": "jv",
+      "post": {
+        "screenshot": "src/assets/web3.avif",
+        "title": "vause jv",
+        "summary": "Tried implementing newly acquired knowledge on backend on my simple front. ",
+        "repo": "github.com.io/jv_23",
+        "live_demo": "github.com.io/jv_23_live",
+        "comments": [
+          "Actually looks nice",
+          "All's good but your div on larger screen isn't centered.",
+          "Use shad for ui much better! =)"
+        ],
+        "upvote": 3
       }
     }
   ] 
