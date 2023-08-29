@@ -9,11 +9,24 @@ export default function HomeCards() {
   const { isLoading, data } = useGetUser();
   const [vote, setVote] = useState();
 
-  const useFetchUser = () => {
-    
-    useEffect(() => {
-
-    })
+  const fetchUser = (user: UserTypes<string, number>) => {
+    const votes = {
+      "id": user.id,
+      "user_name": user.user_name,
+      "avatar": user.avatar,
+      "posts": {
+        "screenshot": user.posts.screenshot,
+        "title": user.posts.title,
+        "summary": user.posts.summary,
+        "repo": user.posts.repo,
+        "live_demo": user.posts.live_demo,
+        "comments": user.posts.comments,
+        "upvote": user.posts.upvote++
+         }
+      }
+      return axios.patch(`http://localhost:3000/users/${user.id}/?posts=upvote`, votes)
+                      .then(res => setVote(res.data.posts.upvote))
+                      .catch(err => console.log(err));
   }
   
   if (isLoading) {
@@ -23,22 +36,6 @@ export default function HomeCards() {
   return (
     <div className='flex flex-col space-y-10'>
         {data?.data.map((user: UserTypes<string, number>) => {
-
-          const votes = {
-            "id": user.id,
-            "user_name": user.user_name,
-            "avatar": user.avatar,
-            "posts": {
-              "screenshot": user.posts.screenshot,
-              "title": user.posts.title,
-              "summary": user.posts.summary,
-              "repo": user.posts.repo,
-              "live_demo": user.posts.live_demo,
-              "comments": user.posts.comments,
-              "upvote": user.posts.upvote++
-               }
-            }
-
 
             return (
               <div key={user.id} className={`border rounded-md border-cyan-50 max-w-xl mx-auto p-5 shadow-md`}>
@@ -54,11 +51,7 @@ export default function HomeCards() {
                 <p className='mt-5'>{user.posts.summary}</p>
 
                 <div className='flex gap-5 mt-2'>
-                  <section className='flex gap-1 hover: cursor-pointer' onClick={() => {
-                    axios.patch(`http://localhost:3000/users/${user.id}/?posts=upvote`, votes)
-                      .then(res => setVote(res.data.posts.upvote))
-                      .catch(err => console.log(err));
-                  }}>                   
+                  <section className='flex gap-1 hover: cursor-pointer' onClick={() => fetchUser(user)}>                   
                     <ArrowUp size={18} className="mt-1"/>
                     <p>{user.posts.upvote}</p>
                   </section> 
