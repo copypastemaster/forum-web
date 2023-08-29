@@ -13,6 +13,6 @@ export interface UserTypes<S, N> {
     avatar: S,
     id: N
     user_name: S
-    post: UserPost<string, string[], number>
+    posts: UserPost<string, string[], number>
 }   
 

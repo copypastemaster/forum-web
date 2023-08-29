@@ -2,57 +2,75 @@
   "users": [
     {
       "id": 1,
-      "user_name": "Enoch",
+      "user_name": "enoch",
       "avatar": "en",
-      "post": {
+      "posts": {
         "screenshot": "src/assets/web1.jpg",
-        "title": "Car-rental",
-        "summary": "A car rental website. Tried using zustand on a project! Tech stack: React, Tailwind, Zustand",
+        "title": "car-rental",
+        "summary": "My recent one! Car rental website where you can search, browse for luxury cars. Tech used: React, tailwind, zustand",
         "repo": "github.com.io/car-rental",
         "live_demo": "github.com.io/car-rental-live",
         "comments": [
-          "You're god",
-          "So neat!",
-          "I like your work."
+          [
+            [
+              [
+                [
+                  "Absolute god.",
+                  "Nicely done, sir!",
+                  "Sheeeesh!"
+                ]
+              ]
+            ]
+          ]
         ],
-        "upvote": 13232
+        "upvote": 1416
       }
     },
     {
       "id": 2,
       "user_name": "rj_69",
       "avatar": "rj",
-      "post": {
+      "posts": {
         "screenshot": "src/assets/web2.avif",
-        "title": "rj-d-great!",
-        "summary": "My first ever website! Please do criticize my work as I continue to improve. All learners, let's study together!",
-        "repo": "github.com.io/rj-d-great",
-        "live_demo": "github.com.io/rj-d-g-reat-live",
+        "title": "rjdboss",
+        "summary": "practicing my tech stack",
+        "repo": "github.com.io/my_work",
+        "live_demo": "github.com.io/my_work-live",
         "comments": [
-          "What framework did you use on this?",
-          "Good job!",
-          "Let's collab!"
+          [
+            [
+              "Good job! How long have you been studying?",
+              "Keep going. Good work!",
+              "Nice",
+              "Looking good!"
+            ]
+          ]
         ],
-        "upvote": 3
+        "upvote": 6
       }
     },
     {
+      "3": "",
       "id": 3,
       "user_name": "jv_23",
       "avatar": "jv",
-      "post": {
+      "posts": {
         "screenshot": "src/assets/web3.avif",
         "title": "vause jv",
         "summary": "Tried implementing newly acquired knowledge on backend on my simple front. ",
         "repo": "github.com.io/jv_23",
         "live_demo": "github.com.io/jv_23_live",
         "comments": [
-          "Actually looks nice",
-          "All's good but your div on larger screen isn't centered.",
-          "Use shad for ui much better! =)"
+          [
+            [
+              "Actually looks nice",
+              "All's good but your div on larger screen isn't centered.",
+              "Use shad for ui much better! =)"
+            ]
+          ]
         ],
-        "upvote": 3
+        "upvote": 5
       }
     }
-  ] 
+  ]
 }
