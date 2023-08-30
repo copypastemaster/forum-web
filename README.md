@@ -9,6 +9,7 @@
 
 ## querying
 - tanstack/react query
+- axios
 
 ## Icons
 - lucide-react

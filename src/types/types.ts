@@ -11,6 +11,7 @@ type UserPost<S, A, N> = {
 
 export interface UserTypes<S, N> {
     avatar: S,
+    color: S,
     id: N
     user_name: S
     posts: UserPost<string, string[], number>

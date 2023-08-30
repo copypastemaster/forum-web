@@ -2,6 +2,7 @@
   "users": [
     {
       "id": 1,
+      "color": "orange",
       "user_name": "enoch",
       "avatar": "en",
       "posts": {
@@ -15,11 +16,12 @@
           "Nicely done, sir!",
           "Sheeeesh!"
         ],
-        "upvote": 1141
+        "upvote": 1024
       }
     },
     {
       "id": 2,
+      "color": "orange",
       "user_name": "rj_69",
       "avatar": "rj",
       "posts": {
@@ -34,11 +36,12 @@
           "Nice",
           "Looking good!"
         ],
-        "upvote": 77
+        "upvote": 89
       }
     },
     {
       "id": 3,
+      "color": "black",
       "user_name": "jv_23",
       "avatar": "jv",
       "posts": {
@@ -52,7 +55,7 @@
           "All's good but your div on larger screen isn't centered.",
           "Use shad for ui much better! =)"
         ],
-        "upvote": 43
+        "upvote": 44
       }
     }
   ]
