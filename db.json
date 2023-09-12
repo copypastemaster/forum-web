@@ -2,7 +2,9 @@
   "users": [
     {
       "id": 1,
-      "color": "orange",
+      "color": "black",
+      "unclicked": "gray",
+      "state": false,
       "user_name": "enoch",
       "avatar": "en",
       "posts": {
@@ -16,12 +18,14 @@
           "Nicely done, sir!",
           "Sheeeesh!"
         ],
-        "upvote": 1024
+        "upvote": 1037
       }
     },
     {
       "id": 2,
-      "color": "orange",
+      "color": "black",
+      "unclicked": "gray",
+      "state": false,
       "user_name": "rj_69",
       "avatar": "rj",
       "posts": {
@@ -36,12 +40,14 @@
           "Nice",
           "Looking good!"
         ],
-        "upvote": 89
+        "upvote": 92
       }
     },
     {
       "id": 3,
       "color": "black",
+      "unclicked": "gray",
+      "state": false,
       "user_name": "jv_23",
       "avatar": "jv",
       "posts": {

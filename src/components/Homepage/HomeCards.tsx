@@ -10,28 +10,24 @@ export default function HomeCards() {
   const { isLoading, data } = useGetUser();
   const [vote, setVote] = useState(null);
   const [clicked, setClicked] = useState(false);
-  const [color, setColor] = useState('black');
 
-  const updateVotes = async (user: UserTypes<string, number>) => {
+  const updateVotes = async (user: UserTypes<string, number, boolean>) => {
     setClicked(!clicked);
     
     if (clicked) {
-      axios.patch(`http://localhost:3000/users/${user.id}`, {"color": "black"})
-      .then(res => setColor(res.data.color))
-      
+      // axios.patch(`http://localhost:3000/users/${user.id}`, {"color": "black"})
+      // .then(res => setColor('red'))
+      user.state = !user.state;
       return axios.patch(`http://localhost:3000/users/${user.id}/?posts=upvote`, downVotes(user))
-      .then(res => setVote(res.data.posts.upvote))
+      .then(res => setVote( res.data.posts.downvote))
       .catch(err => console.log(err));
+
     } else {
-
-        axios.patch(`http://localhost:3000/users/${user.id}`, {"color": "orange"})
-        .then(res => setColor(res.data.color))
-
+      user.state = !user.state;
         return axios.patch(`http://localhost:3000/users/${user.id}/?posts=upvote`, plusVotes(user))
-      .then(res => setVote(res.data.posts.upvote))
-      .catch(err => console.log(err));
+       .then(res => setVote(res.data.posts.upvote))
+       .catch(err => console.log(err));
     }
-     
   }
 
   if (isLoading) {
@@ -39,8 +35,8 @@ export default function HomeCards() {
   }
   
   return (
-    <div className='flex flex-col space-y-10'>
-        {data?.data.map((user: UserTypes<string, number>) => {
+    <div className='flex flex-col space-y-10 mt-10'>
+        {data?.data.map((user: UserTypes<string, number, boolean>) => {
 
             return (
               <div key={user.id} className={`border rounded-md border-cyan-50 max-w-xl mx-auto p-5 shadow-md`}>
@@ -56,8 +52,10 @@ export default function HomeCards() {
                 <p className='mt-5'>{user.posts.summary}</p>
 
                 <div className='flex gap-5 mt-2'>
-                  <section className='flex gap-1 hover: cursor-pointer' onClick={() => updateVotes(user)}>                   
-                    <ArrowUp size={18} className="mt-1" color={user.color}/>
+                  <section className='flex gap-1 hover: cursor-pointer' onClick={() => updateVotes(user)}>        
+
+                    <ArrowUp size={18} className="mt-1" color={user.state ? user.color : user.unclicked}/>
+                    
                     <p>{user.posts.upvote}</p>
                   </section> 
                   <section className='flex gap-1 hover: cursor-pointer'>

@@ -1,18 +1,17 @@
 import { Routes, Route } from "react-router-dom"
 import NavContainer from "./containers/NavContainer"
 import Home from "./containers/Home"
-
+import { ThemeProvider } from "./components/ui/theme-provider"
 
 function App () {
 
     return (
-        <div>
-
+        <ThemeProvider defaultTheme="dark">
             <NavContainer />
             <Routes>
                 <Route path="/" element={<Home />}/> 
             </Routes>
-            </div>
+        </ThemeProvider>
 
     )
 }

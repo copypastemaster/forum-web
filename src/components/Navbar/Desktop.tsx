@@ -1,7 +1,7 @@
 import { Home, BellDot } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Avatar, AvatarFallback } from '../ui/avatar'
-
+import { ModeToggle } from '../ui/modetoggle'
 
 export default function Desktop() {
   return (
@@ -16,6 +16,7 @@ export default function Desktop() {
         <section className='flex gap-5 mt-1'>
           <Button>Post a project</Button>
 
+          <ModeToggle />
           <Avatar>
             <AvatarFallback>U</AvatarFallback>
           </Avatar>
