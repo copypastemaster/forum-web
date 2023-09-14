@@ -1,9 +1,10 @@
 import { UserTypes } from "@/types/types"
 
-export const plusVotes = (user: UserTypes<string, number>) => {
+export const plusVotes = (user: UserTypes<string, number, boolean>) => {
       const votes = {  
         "id": user.id,
-        "color": "orange",
+        "color": "cyan",
+        "state": false,
         "user_name": user.user_name,
         "avatar": user.avatar,
         "posts": {
@@ -19,10 +20,11 @@ export const plusVotes = (user: UserTypes<string, number>) => {
 return votes
 }
 
-export const downVotes = (user: UserTypes<string, number>) => {
+export const downVotes = (user: UserTypes<string, number, boolean>) => {
     const votes = {  
       "id": user.id,
-      "color": "black",
+      "color": "cyan",
+      "state": false,
       "user_name": user.user_name,
       "avatar": user.avatar,
       "posts": {

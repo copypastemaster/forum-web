@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "color": "black",
+      "color": "cyan",
       "unclicked": "gray",
       "state": false,
       "user_name": "enoch",
@@ -18,12 +18,12 @@
           "Nicely done, sir!",
           "Sheeeesh!"
         ],
-        "upvote": 1037
+        "upvote": 1039
       }
     },
     {
       "id": 2,
-      "color": "black",
+      "color": "cyan",
       "unclicked": "gray",
       "state": false,
       "user_name": "rj_69",
@@ -45,7 +45,7 @@
     },
     {
       "id": 3,
-      "color": "black",
+      "color": "cyan",
       "unclicked": "gray",
       "state": false,
       "user_name": "jv_23",

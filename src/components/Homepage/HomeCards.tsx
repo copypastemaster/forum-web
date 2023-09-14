@@ -1,9 +1,10 @@
 import { useGetUser } from "@/services/getUsers"
 import { UserTypes } from "@/types/types"
-import { ArrowUp, MessageSquare } from "lucide-react"
+import { ArrowUp, MessageSquare, Send, SendHorizontal } from "lucide-react"
 import { useState } from 'react'
 import axios from "axios"
 import { plusVotes, downVotes } from "@/services/resources"
+import {Collapsible, CollapsibleContent, CollapsibleTrigger} from '@/components/ui/collapsible'
 
 export default function HomeCards() {
 
@@ -39,7 +40,7 @@ export default function HomeCards() {
         {data?.data.map((user: UserTypes<string, number, boolean>) => {
 
             return (
-              <div key={user.id} className={`border rounded-md border-cyan-50 max-w-xl mx-auto p-5 shadow-md`}>
+              <Collapsible key={user.id} className={`border rounded-md border-cyan-300 max-w-xl mx-auto p-5 shadow-md`}>
                 <img src={user.posts.screenshot} className='mx-auto hover:cursor-pointer'/>
                 <h1 className='text-3xl font-semibold mt-5'>{user.posts.title}</h1>
                 <p className='text-md font-light mt-2'>{user.user_name}</p>
@@ -58,13 +59,30 @@ export default function HomeCards() {
                     
                     <p>{user.posts.upvote}</p>
                   </section> 
-                  <section className='flex gap-1 hover: cursor-pointer'>
+                  <CollapsibleTrigger className='flex gap-1 hover: cursor-pointer'>
                     <MessageSquare size={18} className='mt-1'/>
                     <p>{user.posts.comments.length}</p>
-                  </section>
+                  </CollapsibleTrigger>
                 </div>
+                
+                
+                <CollapsibleContent className="flex flex-col lg:hidden">
+                <h1 className='mt-3 text-lg font-semibold text-cyan-300'>Comments</h1>
+                  {user.posts.comments.map((comment) => {
+                    return (
+                      <p className='mt-2 text-sm'>{comment}</p>
+                    )
+                  })}
+                </CollapsibleContent>
 
-              </div>
+                <div className="flex justify-between">
+                <input type='text'
+                       className='bg-transparent w-full mt-2 outline-none p-2 rounded-md' 
+                       placeholder="write a comment..."/>
+                <SendHorizontal size={20}/>
+                </div>
+                
+              </Collapsible>
             )
         })}
     </div>
