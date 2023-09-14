@@ -13,9 +13,5 @@ export function useGetUser () {
 }
 
 
-// const updateVote = (vote: number) => {
-//     return axios.put(`http://localhost:3000/users/`, vote)
-// }
-
 
 

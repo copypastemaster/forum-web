@@ -8,6 +8,11 @@ type UserPost<S, A, N> = {
     upvote: N
 }
 
+export type Comments<S, B> = {
+    comment: S,
+    deleted: B,
+}
+
 
 export interface UserTypes<S, N, B> {
     avatar: S,
@@ -16,6 +21,6 @@ export interface UserTypes<S, N, B> {
     state: B,
     id: N
     user_name: S
-    posts: UserPost<string, string[], number>
+    posts: UserPost<string, Comments<string, boolean>[], number>
 }   
 

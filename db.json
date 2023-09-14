@@ -14,11 +14,20 @@
         "repo": "github.com.io/car-rental",
         "live_demo": "github.com.io/car-rental-live",
         "comments": [
-          "Absolute god.",
-          "Nicely done, sir!",
-          "Sheeeesh!"
+          {
+            "comment": "Absolute god",
+            "deleted": false
+          },
+          {
+            "comment": "Nicely done, sir!",
+            "deleted": false
+          },
+          {
+            "comment": "Sheesh!",
+            "deleted": false
+          }
         ],
-        "upvote": 1039
+        "upvote": 892
       }
     },
     {
@@ -35,10 +44,22 @@
         "repo": "github.com.io/my_work",
         "live_demo": "github.com.io/my_work-live",
         "comments": [
-          "Good job! How long have you been studying?",
-          "Keep going. Good work!",
-          "Nice",
-          "Looking good!"
+          {
+            "comment": "Good job! How long have you been studying?",
+            "deleted": false
+          },
+          {
+            "comment": "Keep going. Good work!",
+            "deleted": false
+          },
+          {
+            "comment": "Nice",
+            "deleted": false
+          },
+          {
+            "comment": "Looking good!",
+            "deleted": false
+          }
         ],
         "upvote": 92
       }
@@ -57,9 +78,18 @@
         "repo": "github.com.io/jv_23",
         "live_demo": "github.com.io/jv_23_live",
         "comments": [
-          "Actually looks nice",
-          "All's good but your div on larger screen isn't centered.",
-          "Use shad for ui much better! =)"
+          {
+            "comment": "Actually looks nice",
+            "deleted": false
+          },
+          {
+            "comment": "All's good but your div on larger screen isn't centered.",
+            "deleted": false
+          },
+          {
+            "comment": "Use shad for ui much better! =)",
+            "deleted": false
+          }
         ],
         "upvote": 44
       }

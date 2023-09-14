@@ -1,6 +1,6 @@
 import { useGetUser } from "@/services/getUsers"
-import { UserTypes } from "@/types/types"
-import { ArrowUp, MessageSquare, Send, SendHorizontal } from "lucide-react"
+import { UserTypes, Comments } from "@/types/types"
+import { ArrowUp, MessageSquare, SendHorizontal } from "lucide-react"
 import { useState } from 'react'
 import axios from "axios"
 import { plusVotes, downVotes } from "@/services/resources"
@@ -16,8 +16,6 @@ export default function HomeCards() {
     setClicked(!clicked);
     
     if (clicked) {
-      // axios.patch(`http://localhost:3000/users/${user.id}`, {"color": "black"})
-      // .then(res => setColor('red'))
       user.state = !user.state;
       return axios.patch(`http://localhost:3000/users/${user.id}/?posts=upvote`, downVotes(user))
       .then(res => setVote( res.data.posts.downvote))
@@ -68,9 +66,15 @@ export default function HomeCards() {
                 
                 <CollapsibleContent className="flex flex-col lg:hidden">
                 <h1 className='mt-3 text-lg font-semibold text-cyan-300'>Comments</h1>
-                  {user.posts.comments.map((comment) => {
+                  {user.posts.comments.map((commentKey: Comments<string, boolean>, index) => {
                     return (
-                      <p className='mt-2 text-sm'>{comment}</p>
+                      <>
+                        {commentKey.deleted ? null : 
+                          <p key={index} className='mt-2 text-sm'>{commentKey.comment}</p>
+                        }
+                        
+                      </>
+
                     )
                   })}
                 </CollapsibleContent>
@@ -79,7 +83,8 @@ export default function HomeCards() {
                 <input type='text'
                        className='bg-transparent w-full mt-2 outline-none p-2 rounded-md' 
                        placeholder="write a comment..."/>
-                <SendHorizontal size={20}/>
+                <SendHorizontal size={20}
+                                className='mt-4'/>
                 </div>
                 
               </Collapsible>

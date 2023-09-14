@@ -1,6 +1,5 @@
 # Forum web
-### applied rest api to practice by building this website
-### used json-server for db and server
+### Flex your personal projects and let people collaborate/discuss
 
 ## UI
 - react
