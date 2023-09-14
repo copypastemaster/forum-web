@@ -1,6 +1,6 @@
 import { useGetUser } from "@/services/getUsers"
 import { UserTypes, Comments } from "@/types/types"
-import { ArrowUp, MessageSquare, SendHorizontal } from "lucide-react"
+import { ArrowUp, MessageSquare, SendHorizontal, X } from "lucide-react"
 import { useState } from 'react'
 import axios from "axios"
 import { plusVotes, downVotes } from "@/services/resources"
@@ -32,6 +32,8 @@ export default function HomeCards() {
   if (isLoading) {
     return <h1>Loading ... </h1>
   }
+
+  const uniqid = '12EqwqAsx';
   
   return (
     <div className='flex flex-col space-y-10 mt-10'>
@@ -44,8 +46,14 @@ export default function HomeCards() {
                 <p className='text-md font-light mt-2'>{user.user_name}</p>
 
                 <div className='flex flex-col mt-2'>
-                  <a className='text-sm font-normal mt-1 underline' href="#">Repo: {user.posts.repo} </a>
-                  <a className='text-sm font-normal mt-1 underline' href="#">Live: {user.posts.live_demo} </a>
+                  <p className='flex gap-2 text-gray-400'>repo:
+                    <a className='text-sm italic leading-4 mt-1 underline' href="#"> {user.posts.repo} </a> 
+                  </p>
+                  
+                  <p className='flex gap-2 text-gray-400'>live:
+                    <a className='text-sm italic leading-4 mt-1 underline' href="#"> {user.posts.live_demo} </a> 
+                  </p>
+                 
                 </div>
                 
                 <p className='mt-5'>{user.posts.summary}</p>
@@ -64,27 +72,29 @@ export default function HomeCards() {
                 </div>
                 
                 
-                <CollapsibleContent className="flex flex-col lg:hidden">
-                <h1 className='mt-3 text-lg font-semibold text-cyan-300'>Comments</h1>
+                <CollapsibleContent className="flex flex-col gap-2 xl:hidden">
+                <h1 className='mt-10 text-lg font-semibold text-cyan-300 w-full border p-2 rounded-md bg-slate-800'>Comments</h1>
                   {user.posts.comments.map((commentKey: Comments<string, boolean>, index) => {
                     return (
-                      <>
+                      <div key={index}>
                         {commentKey.deleted ? null : 
-                          <p key={index} className='mt-2 text-sm'>{commentKey.comment}</p>
-                        }
-                        
-                      </>
-
+                      <div className='flex justify-between'>
+                          <p className='mt-2 text-sm'>{commentKey.comment}</p>
+                          <X size={25} color="gray"/>
+                      </div>                        
+                        } 
+                      </div>
                     )
                   })}
                 </CollapsibleContent>
 
-                <div className="flex justify-between">
+                <div className="flex justify-between mt-2">
                 <input type='text'
                        className='bg-transparent w-full mt-2 outline-none p-2 rounded-md' 
                        placeholder="write a comment..."/>
                 <SendHorizontal size={20}
-                                className='mt-4'/>
+                                className='mt-4 mr-1'
+                                color='cyan'/>
                 </div>
                 
               </Collapsible>
