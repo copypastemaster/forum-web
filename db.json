@@ -27,7 +27,7 @@
             "deleted": false
           }
         ],
-        "upvote": 897
+        "upvote": 898
       }
     },
     {
@@ -61,7 +61,7 @@
             "deleted": false
           }
         ],
-        "upvote": 93
+        "upvote": 94
       }
     },
     {
@@ -95,12 +95,56 @@
       }
     }
   ],
-  "posts": [
+  "comments": [
     {
+      "userId": 1,
       "id": 1,
-      "comments": [
-        {"comment": "hello"}
-      ]
+      "comment": "Absolute god"
+    },
+    {
+      "userId": 1,
+      "id": 2,
+      "comment": "Nicely done, sir!"
+    },
+    {
+      "userId": 1,
+      "id": 3,
+      "comment": "Sheesh!"
+    },
+    {
+      "userId": 2,
+      "id": 4,
+      "comment": "Good job! How long have you been studying?"
+    },
+    {
+      "userId": 2,
+      "id": 5,
+      "comment": "Keep going. Good work!"
+    },
+    {
+      "userId": 2,
+      "id": 6,
+      "comment": "Nice"
+    },
+    {
+      "userId": 2,
+      "id": 7,
+      "comment": "Looking good!"
+    },
+    {
+      "userId": 3,
+      "id": 8,
+      "comment": "Actually looks nice"
+    },
+    {
+      "userId": 3,
+      "id": 9,
+      "comment": "All's good but your div on larger screen isn't centered."
+    },
+    {
+      "userId": 3,
+      "id": 10,
+      "comment": "Use shad for ui much better! =)"
     }
   ]
 }
