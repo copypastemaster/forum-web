@@ -11,6 +11,7 @@ export default function HomeCards() {
   const { isLoading, data } = useGetUser();
   const [vote, setVote] = useState(null);
   const [clicked, setClicked] = useState(false);
+  
 
   const updateVotes = async (user: UserTypes<string, number, boolean>) => {
     setClicked(!clicked);
@@ -33,14 +34,15 @@ export default function HomeCards() {
     return <h1>Loading ... </h1>
   }
 
-  const uniqid = '12EqwqAsx';
   
   return (
-    <div className='flex flex-col space-y-10 mt-10'>
+    
+    <div className='flex flex-col space-y-10 mt-10'>      
         {data?.data.map((user: UserTypes<string, number, boolean>) => {
 
             return (
               <Collapsible key={user.id} className={`border rounded-md border-cyan-300 max-w-xl mx-auto p-5 shadow-md`}>
+                
                 <img src={user.posts.screenshot} className='mx-auto hover:cursor-pointer'/>
                 <h1 className='text-3xl font-semibold mt-5'>{user.posts.title}</h1>
                 <p className='text-md font-light mt-2'>{user.user_name}</p>

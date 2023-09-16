@@ -27,7 +27,7 @@
             "deleted": false
           }
         ],
-        "upvote": 894
+        "upvote": 897
       }
     },
     {
@@ -93,6 +93,14 @@
         ],
         "upvote": 44
       }
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "comments": [
+        {"comment": "hello"}
+      ]
     }
   ]
 }
