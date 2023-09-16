@@ -8,9 +8,10 @@ type UserPost<S, A, N> = {
     upvote: N
 }
 
-export type Comments<S, B> = {
+export type Comments<N, S> = {
+    userId: N,
+    id: N,
     comment: S,
-    deleted: B,
 }
 
 

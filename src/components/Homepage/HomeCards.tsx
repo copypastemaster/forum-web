@@ -1,28 +1,31 @@
 import { useGetUser, useGetComments, updateVotes } from "@/services/query"
-import { UserTypes, Comments } from "@/types/types"
+import { UserTypes, Comments, CommentsTest } from "@/types/types"
 import { ArrowUp, MessageSquare, SendHorizontal, X } from "lucide-react"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {Collapsible, CollapsibleContent, CollapsibleTrigger} from '@/components/ui/collapsible'
+import axios from "axios"
 
 export default function HomeCards() {
 
   const [vote, setVote] = useState(null);
   const [clicked, setClicked] = useState(false);
 
-  const { isLoading: userLoad, data: userData } = useGetUser();
+  const { isLoading: userLoad, data: userData, error: userError } = useGetUser();
   const { isLoading: commentsLoad, data: commentsData, error: commentsError } = useGetComments()
+  const COMMENTS_ENDPOINT = 'http://localhost:3000/comments';
+  const USER_ENDPOINT = 'http://localhost:3000/users';
 
-  console.log(commentsData?.data)
+  
+  //loading states
+  if (userLoad || commentsLoad) <h1>Loading ...</h1>
 
-  if (userLoad) {
-    return <h1>Loading ... </h1>
-  }
-
+  //error states
+  if (userError || commentsError) <h1>Error</h1>
   
   return (
     
     <div className='flex flex-col space-y-10 mt-10'>      
-        {userData?.data.map((user: UserTypes<string, number, boolean>) => {
+        {userData?.map((user: UserTypes<string, number, boolean>) => {
 
             return (
               <Collapsible key={user.id} className={`border rounded-md border-cyan-300 max-w-xl mx-auto p-5 shadow-md`}>
@@ -47,7 +50,7 @@ export default function HomeCards() {
                 <div className='flex gap-5 mt-2'>
                   <section className='flex gap-1 hover: cursor-pointer' onClick={() => {
                     setClicked(!clicked)
-                    updateVotes(user, clicked, setClicked)
+                    updateVotes(user, clicked, setVote)
                   }}>        
 
                     <ArrowUp size={18} className="mt-1" color={user.state ? user.color : user.unclicked}/>
@@ -56,25 +59,20 @@ export default function HomeCards() {
                   </section> 
                   <CollapsibleTrigger className='flex gap-1 hover: cursor-pointer'>
                     <MessageSquare size={18} className='mt-1'/>
-                    <p>{user.posts.comments.length}</p>
+                    {/* comment count */}
                   </CollapsibleTrigger>
-                </div>
-                
+                </div>               
                 
                 <CollapsibleContent className="flex flex-col gap-2 xl:hidden">
                 <h1 className='mt-10 text-lg font-semibold text-cyan-300 w-full border p-2 rounded-md bg-slate-800'>Comments</h1>
-                  {user.posts.comments.map((commentKey: Comments<string, boolean>, index) => {
-                    return (
-                      <div key={index}>
-                        {commentKey.deleted ? null : 
-                      <div className='flex justify-between'>
-                          <p className='mt-2 text-sm'>{commentKey.comment}</p>
-                          <X size={25} color="gray"/>
-                      </div>                        
-                        } 
-                      </div>
-                    )
-                  })}
+                  {commentsData?.map((comments: Comments<number, string>) => {
+                      if(user.id == comments.userId) return (
+                        <div key={comments.id} className='flex justify-between'>
+                              <p className='mt-2 text-sm'>{comments.comment}</p>
+                              <X size={25} color="gray"/>
+                        </div>
+                      )
+                    })}
                 </CollapsibleContent>
 
                 <div className="flex justify-between mt-2">

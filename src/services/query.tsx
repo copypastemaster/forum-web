@@ -6,30 +6,31 @@ import { UserTypes } from '@/types/types'
 const users = 'http://localhost:3000/users'
 const userComments = 'http://localhost:3000/comments'
 
-
-
 export function useGetUser () {
-    const { isLoading, data } = useQuery('users', () => {
-        return axios.get(users)
+    const { isLoading, data, error } = useQuery('users', () => {
+        return axios.get(users).then(res => res.data);             
     })
 
     return {
         isLoading, 
-        data
+        data,
+        error
     }
 }
 
 export function useGetComments () {
     const { isLoading, data, error } = useQuery('comments', () => {
-        return axios.get(userComments + '?userId=1')
+        return axios.get(userComments).then(res => res.data);
     })
 
     return {
-        isLoading, data, error
+        isLoading, 
+        data, 
+        error
     }
 }
 
-export const updateVotes = async (user: UserTypes<string, number, boolean>, clicked: boolean, setter: React.Dispatch<React.SetStateAction<boolean>>) => {
+export const updateVotes = async (user: UserTypes<string, number, boolean>, clicked: boolean, setter: React.Dispatch<React.SetStateAction<null>>) => {
     
     if (clicked) {
       user.state = !user.state;
@@ -38,7 +39,7 @@ export const updateVotes = async (user: UserTypes<string, number, boolean>, clic
       .catch(err => console.log(err));
 
     } else {
-      user.state = !user.state;
+      user.state = !user.state; 
         return axios.patch(`http://localhost:3000/users/${user.id}/?posts=upvote`, plusVotes(user))
        .then(res => setter(res.data.posts.upvote))
        .catch(err => console.log(err));

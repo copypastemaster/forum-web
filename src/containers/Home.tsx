@@ -1,10 +1,9 @@
-import HomePostCards from "@/components/Homepage/HomePostCards";
-
+import HomeCards from "@/components/Homepage/HomeCards"
 
 export default function Home() {
   return (
     <div>
-      <HomePostCards />
+      <HomeCards />
       {/* ViewSection */}
     </div>
   )

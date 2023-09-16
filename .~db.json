@@ -13,6 +13,20 @@
         "summary": "My recent one! Car rental website where you can search, browse for luxury cars. Tech used: React, tailwind, zustand",
         "repo": "github.com.io/car-rental",
         "live_demo": "github.com.io/car-rental-live",
+        "comments": [
+          {
+            "comment": "Absolute god",
+            "deleted": false
+          },
+          {
+            "comment": "Nicely done, sir!",
+            "deleted": false
+          },
+          {
+            "comment": "Sheesh!",
+            "deleted": false
+          }
+        ],
         "upvote": 903
       }
     },
@@ -29,6 +43,24 @@
         "summary": "practicing my tech stack. learners like me please feel free to collab to practice our git skills! :) ",
         "repo": "github.com.io/my_work",
         "live_demo": "github.com.io/my_work-live",
+        "comments": [
+          {
+            "comment": "Good job! How long have you been studying?",
+            "deleted": false
+          },
+          {
+            "comment": "Keep going. Good work!",
+            "deleted": false
+          },
+          {
+            "comment": "Nice",
+            "deleted": false
+          },
+          {
+            "comment": "Looking good!",
+            "deleted": false
+          }
+        ],
         "upvote": 95
       }
     },
@@ -45,9 +77,56 @@
         "summary": "Tried implementing newly acquired knowledge on backend on my simple front. ",
         "repo": "github.com.io/jv_23",
         "live_demo": "github.com.io/jv_23_live",
+        "comments": [
+          {
+            "comment": "Actually looks nice",
+            "deleted": false
+          },
+          {
+            "comment": "All's good but your div on larger screen isn't centered.",
+            "deleted": false
+          },
+          {
+            "comment": "Use shad for ui much better! =)",
+            "deleted": false
+          }
+        ],
         "upvote": 45
       }
-    } 
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "id": 7
+    },
+    {
+      "id": 8
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "id": 14
+    }
   ],
   "comments": [
     {
