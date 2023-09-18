@@ -1,7 +1,7 @@
 import { useGetUser, useGetComments, updateVotes } from "@/services/query"
-import { UserTypes, Comments, CommentsTest } from "@/types/types"
+import { UserTypes, Comments } from "@/types/types"
 import { ArrowUp, MessageSquare, SendHorizontal, X } from "lucide-react"
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {Collapsible, CollapsibleContent, CollapsibleTrigger} from '@/components/ui/collapsible'
 import axios from "axios"
 
@@ -14,13 +14,7 @@ export default function HomeCards() {
   const { isLoading: userLoad, data: userData, error: userError } = useGetUser();
   const { isLoading: commentsLoad, data: commentsData, error: commentsError } = useGetComments()
   const COMMENTS_ENDPOINT = 'http://localhost:3000/comments';
-  const USER_ENDPOINT = 'http://localhost:3000/users';
-
-  const user1 = (id: number) => {
-    return commentsData?.filter((comments: Comments<number, string>) => comments.userId == id).pop();
-  }
-
-  console.log(user1(1).id)
+  // const USER_ENDPOINT = 'http://localhost:3000/users';
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -47,9 +41,6 @@ export default function HomeCards() {
   //error states
   if (userError || commentsError) <h1>Error</h1>
 
-  const tester: Comments<number, string>[] = [];
-
-  
   return (
     
     <div className='flex flex-col space-y-10 mt-10'>      
@@ -113,13 +104,12 @@ export default function HomeCards() {
                                 className='mt-4 mr-1'
                                 color='cyan'
                                 onClick={() => {
-                                 commentsData?.forEach((comments: Comments<number, string>) => {
-                                  if (user.id == comments.userId) {
-                                    tester.push(comments);
-                                    console.log(tester);
-                                    // return postComment(comments.userId, user1(comments.id)+1, input)
+                                  for (let i = 0; i<=commentsData?.length; i++) {
+                                    if (user.id == commentsData[i].userId) {
+                                      const ids = commentsData.length+1;
+                                      return postComment(commentsData[i].userId, ids, input);
+                                    }
                                   }
-                                 })
                                 }}/>
                 </div>
                 
