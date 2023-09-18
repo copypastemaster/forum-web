@@ -3,7 +3,9 @@ import { UserTypes, Comments } from "@/types/types"
 import { ArrowUp, MessageSquare, SendHorizontal, X } from "lucide-react"
 import { useEffect, useState } from 'react'
 import {Collapsible, CollapsibleContent, CollapsibleTrigger} from '@/components/ui/collapsible'
+import { Popover, PopoverContent, PopoverTrigger } from  '@/components/ui/popover'
 import axios from "axios"
+import { Button } from "../ui/button"
 
 export default function HomeCards() {
 
@@ -42,6 +44,17 @@ export default function HomeCards() {
      return (comments.userId == userid)
    })
  }
+
+  //delete req
+  const deleteComment = async (id: number) => {
+      try {
+        const delComment = await axios.delete(COMMENTS_ENDPOINT + '/' + id)
+        const delData = await delComment.data;
+        return delData;
+      } catch (err) {
+        console.log(err)
+      }
+  }
 
   
   //loading states
@@ -98,7 +111,18 @@ export default function HomeCards() {
                       if(user.id == comments.userId) return (
                         <div key={comments.id} className='flex justify-between'>
                               <p className='mt-2 text-sm'>{comments.comment}</p>
-                              <X size={25} color="gray" />
+                              <Popover>
+                                <PopoverTrigger>
+                                 <X size={25} color="gray"/>
+                                </PopoverTrigger>
+                                <PopoverContent className='flex flex-col text-center gap-4 w-40 sm:w-64 max-xl:w-100'>
+                                  <p>Delete this comment?</p>
+                                  <Button onClick={() => {
+                                    deleteComment(comments.id)
+                                  }}
+                                  >Delete</Button>                                
+                                </PopoverContent>
+                              </Popover>
                         </div>
                       )
                     })}
