@@ -9,18 +9,46 @@ export default function HomeCards() {
 
   const [vote, setVote] = useState(null);
   const [clicked, setClicked] = useState(false);
+  const [input, setInput] = useState('');
 
   const { isLoading: userLoad, data: userData, error: userError } = useGetUser();
   const { isLoading: commentsLoad, data: commentsData, error: commentsError } = useGetComments()
   const COMMENTS_ENDPOINT = 'http://localhost:3000/comments';
   const USER_ENDPOINT = 'http://localhost:3000/users';
 
+  const user1 = (id: number) => {
+    return commentsData?.filter((comments: Comments<number, string>) => comments.userId == id).pop();
+  }
+
+  console.log(user1(1).id)
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  }
+
+  const postComment = async (userId: number, id: number, comment: string,) => {
+    try {
+      const data = await axios.post(COMMENTS_ENDPOINT, 
+        {
+          userId: userId, 
+          id: id, 
+          comment: comment
+        }).then(res => console.log(res.data));
+    } catch (e) {
+      console.log(e);
+    }
+    
+    setInput('');
+  }
   
   //loading states
   if (userLoad || commentsLoad) <h1>Loading ...</h1>
 
   //error states
   if (userError || commentsError) <h1>Error</h1>
+
+  const tester: Comments<number, string>[] = [];
+
   
   return (
     
@@ -78,10 +106,21 @@ export default function HomeCards() {
                 <div className="flex justify-between mt-2">
                 <input type='text'
                        className='bg-transparent w-full mt-2 outline-none p-2 rounded-md' 
-                       placeholder="write a comment..."/>
+                       placeholder="write a comment..."
+                       value={input}
+                       onChange={handleChange}/>
                 <SendHorizontal size={20}
                                 className='mt-4 mr-1'
-                                color='cyan'/>
+                                color='cyan'
+                                onClick={() => {
+                                 commentsData?.forEach((comments: Comments<number, string>) => {
+                                  if (user.id == comments.userId) {
+                                    tester.push(comments);
+                                    console.log(tester);
+                                    // return postComment(comments.userId, user1(comments.id)+1, input)
+                                  }
+                                 })
+                                }}/>
                 </div>
                 
               </Collapsible>
