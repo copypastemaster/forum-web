@@ -1,7 +1,7 @@
 import { useGetUser, useGetComments, updateVotes } from "@/services/query"
 import { UserTypes, Comments } from "@/types/types"
 import { ArrowUp, MessageSquare, SendHorizontal, X } from "lucide-react"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {Collapsible, CollapsibleContent, CollapsibleTrigger} from '@/components/ui/collapsible'
 import axios from "axios"
 
@@ -14,12 +14,13 @@ export default function HomeCards() {
   const { isLoading: userLoad, data: userData, error: userError } = useGetUser();
   const { isLoading: commentsLoad, data: commentsData, error: commentsError } = useGetComments()
   const COMMENTS_ENDPOINT = 'http://localhost:3000/comments';
-  // const USER_ENDPOINT = 'http://localhost:3000/users';
 
+ 
   const handleChange = (e) => {
     setInput(e.target.value);
   }
 
+  //post req
   const postComment = async (userId: number, id: number, comment: string,) => {
     try {
       const data = await axios.post(COMMENTS_ENDPOINT, 
@@ -34,6 +35,14 @@ export default function HomeCards() {
     
     setInput('');
   }
+
+  //comments count
+  const filterComments = (userid: number) => {
+    return commentsData?.filter((comments: Comments<number, string>) => {
+     return (comments.userId == userid)
+   })
+ }
+
   
   //loading states
   if (userLoad || commentsLoad) <h1>Loading ...</h1>
@@ -41,6 +50,7 @@ export default function HomeCards() {
   //error states
   if (userError || commentsError) <h1>Error</h1>
 
+ 
   return (
     
     <div className='flex flex-col space-y-10 mt-10'>      
@@ -78,7 +88,7 @@ export default function HomeCards() {
                   </section> 
                   <CollapsibleTrigger className='flex gap-1 hover: cursor-pointer'>
                     <MessageSquare size={18} className='mt-1'/>
-                    {/* comment count */}
+                    <p> {filterComments(user.id).length} </p>
                   </CollapsibleTrigger>
                 </div>               
                 
@@ -88,7 +98,7 @@ export default function HomeCards() {
                       if(user.id == comments.userId) return (
                         <div key={comments.id} className='flex justify-between'>
                               <p className='mt-2 text-sm'>{comments.comment}</p>
-                              <X size={25} color="gray"/>
+                              <X size={25} color="gray" />
                         </div>
                       )
                     })}
