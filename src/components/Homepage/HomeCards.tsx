@@ -32,8 +32,7 @@ export default function HomeCards() {
           id: id, 
           comment: comment
         }).then(res => res.data);
-
-        
+      console.log(data);
       return data;
     } catch (e) {
       console.log(e);
@@ -46,6 +45,8 @@ export default function HomeCards() {
   const filterComments = (userid: number) => {
     return commentsData?.filter((comments: Comments<number, string>) => comments.userId == userid)
  }
+
+ console.log(filterComments(1));
 
   //delete req
   const deleteComment = async (id: number) => {

@@ -1,3 +1,5 @@
+import { AxiosError } from "axios"
+
 type UserPost<S, A, N> = {
     screenshot: S,
     title: S,
@@ -25,24 +27,29 @@ export interface UserTypes<S, N, B> {
     posts: UserPost<string, Comments<string, boolean>[], number>
 }
 
-//A - user
-//S - Setstate
-//F - function
-// C - Comments array
-// D - Delete comment
-// Z - String, 
-// P - PostFunc
-//React.Dispatch<React.SetStateAction<string>>
+type Update = (userType: UserTypes<string, number, boolean>,
+               clicked: boolean,
+               setvote: React.Dispatch<React.SetStateAction<null>>
+    ) => void;
 
-export type Collapsible <A, S, F, C, D, Z, P  > = {
-    user: A
-    setClicked: S
-    updateVotes: F
-    filterComments: F
-    comments: C,
-    deleteComment: D,
-    value: S,
-    onchange: Z,
-    postComment: P,
+type Filter = (userid: number) => Comments<number, string>[];
+type CommentsData = Comments<number, string>[];
+type Delete = (id: number) => object | AxiosError 
+type OnChange = (e: React.ChangeEvent<HTMLInputElement>) => void;
+type Post = (userid: number, id: number, comment: string) => object | AxiosError
+type SetVote = React.Dispatch<React.SetStateAction<null>>
+
+export type Collapsibles = {
+    user: UserTypes<string, number, boolean>[]
+    clicked: boolean
+    setclicked: React.Dispatch<React.SetStateAction<boolean>>
+    setvotes: SetVote 
+    updateVotes: Update
+    filtercomments: Filter
+    comments: CommentsData,
+    deletecomment: Delete,
+    value: string,
+    onchange: OnChange,
+    postcomment: Post,
 }
 
