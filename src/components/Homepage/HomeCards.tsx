@@ -9,15 +9,15 @@ import { Button } from "../ui/button"
 
 export default function HomeCards() {
 
-  const [vote, setVote] = useState(null);
-  const [clicked, setClicked] = useState(false);
-  const [input, setInput] = useState('');
-
   const { isLoading: userLoad, data: userData, error: userError } = useGetUser();
   const { isLoading: commentsLoad, data: commentsData, error: commentsError } = useGetComments()
+
+  const [vote, setVote] = useState(null);
+  const [clicked, setClicked] = useState<boolean>(false);
+  const [input, setInput] = useState<string>('');
+  
   const COMMENTS_ENDPOINT = 'http://localhost:3000/comments';
 
- 
   const handleChange = (e) => {
     setInput(e.target.value);
   }
@@ -30,7 +30,10 @@ export default function HomeCards() {
           userId: userId, 
           id: id, 
           comment: comment
-        }).then(res => console.log(res.data));
+        }).then(res => res.data);
+
+        
+      return data;
     } catch (e) {
       console.log(e);
     }
@@ -40,9 +43,7 @@ export default function HomeCards() {
 
   //comments count
   const filterComments = (userid: number) => {
-    return commentsData?.filter((comments: Comments<number, string>) => {
-     return (comments.userId == userid)
-   })
+    return commentsData?.filter((comments: Comments<number, string>) => comments.userId == userid)
  }
 
   //delete req
@@ -55,7 +56,6 @@ export default function HomeCards() {
         console.log(err)
       }
   }
-
   
   //loading states
   if (userLoad || commentsLoad) <h1>Loading ...</h1>
@@ -66,7 +66,7 @@ export default function HomeCards() {
  
   return (
     
-    <div className='flex flex-col space-y-10 mt-10'>      
+    <div className='mt-14 flex flex-col space-y-10 scroll-smooth mx-auto overflow-auto'>      
         {userData?.map((user: UserTypes<string, number, boolean>) => {
 
             return (
@@ -129,23 +129,24 @@ export default function HomeCards() {
                 </CollapsibleContent>
 
                 <div className="flex justify-between mt-2">
-                <input type='text'
-                       className='bg-transparent w-full mt-2 outline-none p-2 rounded-md' 
-                       placeholder="write a comment..."
-                       value={input}
-                       onChange={handleChange}/>
-                <SendHorizontal size={20}
-                                className='mt-4 mr-1'
-                                color='cyan'
-                                onClick={() => {
-                                  for (let i = 0; i<=commentsData?.length; i++) {
-                                    if (user.id == commentsData[i].userId) {
-                                      const ids = commentsData.length+1;
-                                      return postComment(commentsData[i].userId, ids, input);
+                  <input type='text'
+                        className='bg-transparent w-full mt-2 outline-none p-2 rounded-md' 
+                        placeholder="write a comment..."
+                        value={input}
+                        onChange={handleChange}/>
+                  <SendHorizontal size={20}
+                                  className='mt-4 mr-1 hover:cursor-pointer'
+                                  color='cyan'
+                                  onClick={() => {
+                                    for (let i = 0; i<=commentsData?.length; i++) {
+                                      if (user.id == commentsData[i]?.userId) {
+                                        const ids = commentsData.length+1;
+                                        return postComment(commentsData[i].userId, ids, input)
+                                      }
                                     }
-                                  }
-                                }}/>
+                                  }}/>
                 </div>
+                <p>{}</p>
                 
               </Collapsible>
             )
