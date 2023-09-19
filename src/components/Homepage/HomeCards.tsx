@@ -15,6 +15,7 @@ export default function HomeCards() {
   const [vote, setVote] = useState(null);
   const [clicked, setClicked] = useState<boolean>(false);
   const [input, setInput] = useState<string>('');
+  const [display, setDisplay] = useState<React.Component>()
   
   const COMMENTS_ENDPOINT = 'http://localhost:3000/comments';
 
@@ -72,7 +73,7 @@ export default function HomeCards() {
             return (
               <Collapsible key={user.id} className={`border rounded-md border-cyan-300 max-w-xl mx-auto p-5 shadow-md`}>
                 
-                <img src={user.posts.screenshot} className='mx-auto hover:cursor-pointer'/>
+                <img src={user.posts.screenshot} className='mx-auto hover:cursor-pointer md:hover:scale-105 md:transform md:transition md:duration-200'/>
                 <h1 className='text-3xl font-semibold mt-5'>{user.posts.title}</h1>
                 <p className='text-md font-light mt-2'>{user.user_name}</p>
 

@@ -23,5 +23,26 @@ export interface UserTypes<S, N, B> {
     id: N
     user_name: S
     posts: UserPost<string, Comments<string, boolean>[], number>
-}   
+}
+
+//A - user
+//S - Setstate
+//F - function
+// C - Comments array
+// D - Delete comment
+// Z - String, 
+// P - PostFunc
+//React.Dispatch<React.SetStateAction<string>>
+
+export type Collapsible <A, S, F, C, D, Z, P  > = {
+    user: A
+    setClicked: S
+    updateVotes: F
+    filterComments: F
+    comments: C,
+    deleteComment: D,
+    value: S,
+    onchange: Z,
+    postComment: P,
+}
 

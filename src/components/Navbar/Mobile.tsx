@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback } from "../ui/avatar"
 
 export default function Nav() {
   return (
-    <div className='flex justify-between place-items-center md:hidden'>
+    <div className='flex justify-between place-items-center xl:hidden'>
       <Home />
       <input type="search"
              placeholder="search" 
