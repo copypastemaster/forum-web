@@ -3,21 +3,25 @@ import { Collapsibles } from "@/types/types"
 import { Button } from "../ui/button"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
-import { ArrowUp, MessageSquare, SendHorizontal, X, } from "lucide-react"
+import { ArrowUp, MessageSquare, SendHorizontal, View, X, } from "lucide-react"
 import { Comments } from "@/types/types"
-
+import { useContext } from 'react'
+import { ViewContext } from "@/containers/Home"
 
 export default function HomeCollapsible({user, clicked, setclicked, setvotes, updateVotes, filtercomments, comments, deletecomment, value, onchange, postcomment} : Collapsibles){
+  const context = useContext(ViewContext);
+  const { view, setView } = context
   return (
-    <div className='mt-14 flex flex-col space-y-10 scroll-smooth mx-auto overflow-auto'>      
-        {user.map((user: UserTypes<string, number, boolean>) => {
-
-            return (
+    <div>      
               <Collapsible key={user.id} className={`border rounded-md border-cyan-300 max-w-xl mx-auto p-5 shadow-md`}>
-                
-                <img src={user.posts.screenshot} className='mx-auto hover:cursor-pointer md:hover:scale-105 md:transform md:transition md:duration-200'/>
+
+                <img src={user.posts.screenshot} className='mx-auto hover:cursor-pointer md:hover:scale-105 md:transform md:transition md:duration-200'
+                     onClick={() => {
+                      setView({user, clicked, setclicked, setvotes, updateVotes, filtercomments, comments, deletecomment, value, onchange, postcomment});
+                      console.log(view)
+                     }}/>
                 <h1 className='text-3xl font-semibold mt-5'>{user.posts.title}</h1>
-                <p className='text-md font-light mt-2'>{user.user_name}</p>
+                <p className='text-md font-light mt-2'>{user.user_name}</p> 
 
                 <div className='flex flex-col mt-2'>
                   <p className='flex gap-2 text-gray-400'>repo:
@@ -90,9 +94,7 @@ export default function HomeCollapsible({user, clicked, setclicked, setvotes, up
                                   }}/>
                 </div>
                 
-              </Collapsible>
-            )
-        })}
+              </Collapsible>        
     </div>
   )
 }

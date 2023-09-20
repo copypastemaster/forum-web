@@ -40,7 +40,7 @@ type Post = (userid: number, id: number, comment: string) => object | AxiosError
 type SetVote = React.Dispatch<React.SetStateAction<null>>
 
 export type Collapsibles = {
-    user: UserTypes<string, number, boolean>[]
+    user:  UserTypes<string, number, boolean> 
     clicked: boolean
     setclicked: React.Dispatch<React.SetStateAction<boolean>>
     setvotes: SetVote 
