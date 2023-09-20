@@ -13,7 +13,6 @@ export default function Home() {
       <div className='mt-5 xl:ml-10 xl:flex xl:gap-56 '>
         <HomeTweets />
         <HomeCards />
-        <HomeView />
       </div>
     </ViewContext.Provider>
 

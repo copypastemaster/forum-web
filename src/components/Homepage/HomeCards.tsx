@@ -1,8 +1,10 @@
 import { useGetUser, useGetComments, updateVotes } from "@/services/query"
 import { UserTypes, Comments } from "@/types/types"
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import axios from "axios"
 import HomeCollapsible from "./HomeCollapsible"
+import HomeView from "./HomeView"
+import { ViewContext } from "@/containers/Home"
 
 export default function HomeCards() {
 
@@ -60,6 +62,8 @@ export default function HomeCards() {
   //error states
   if (userError || commentsError) <h1>Error</h1>
 
+  const context = useContext(ViewContext)
+  const { view } = context;
  
   return (
     <div className='max-sm:mx-5 mt-14 flex flex-col space-y-10 scroll-smooth mx-auto overflow-auto'>
@@ -72,7 +76,14 @@ export default function HomeCards() {
                               value={input} onchange={handleChange} postcomment={postComment}/>
           </div>
         )
-      })}   
+      })}
+
+      {view == undefined ? null : 
+        <HomeView user={view?.user}  clicked={clicked} setclicked={setClicked} setvotes={setVote} updateVotes={updateVotes} filtercomments={filterComments} comments={commentsData} deletecomment={deleteComment} value={input} onchange={handleChange} postcomment={postComment}
+      />
+      }
+       
+
         
     </div>
 

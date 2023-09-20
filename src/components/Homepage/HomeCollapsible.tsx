@@ -1,4 +1,3 @@
-import { UserTypes } from "@/types/types"
 import { Collapsibles } from "@/types/types"
 import { Button } from "../ui/button"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible"
@@ -19,7 +18,7 @@ export default function HomeCollapsible({user, clicked, setclicked, setvotes, up
                      onClick={() => {
                       setView({user, clicked, setclicked, setvotes, updateVotes, filtercomments, comments, deletecomment, value, onchange, postcomment});
                       console.log(view)
-                     }}/>
+                     }}/> 
                 <h1 className='text-3xl font-semibold mt-5'>{user.posts.title}</h1>
                 <p className='text-md font-light mt-2'>{user.user_name}</p> 
 
@@ -38,7 +37,7 @@ export default function HomeCollapsible({user, clicked, setclicked, setvotes, up
 
                 <div className='flex gap-5 mt-2'>
                   <section className='flex gap-1 hover: cursor-pointer' onClick={() => {
-                    setclicked(clicked)
+                    setclicked(!clicked)
                     updateVotes(user, clicked, setvotes)
                   }}>        
 
