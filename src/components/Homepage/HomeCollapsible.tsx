@@ -2,7 +2,7 @@ import { Collapsibles } from "@/types/types"
 import { Button } from "../ui/button"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
-import { ArrowUp, MessageSquare, SendHorizontal, View, X, } from "lucide-react"
+import { ArrowUp, MessageSquare, SendHorizontal, X, } from "lucide-react"
 import { Comments } from "@/types/types"
 import { useContext } from 'react'
 import { ViewContext } from "@/containers/Home"
@@ -10,6 +10,7 @@ import { ViewContext } from "@/containers/Home"
 export default function HomeCollapsible({user, clicked, setclicked, setvotes, updateVotes, filtercomments, comments, deletecomment, value, onchange, postcomment} : Collapsibles){
   const context = useContext(ViewContext);
   const { view, setView } = context
+
   return (
     <div>      
               <Collapsible key={user.id} className={`border rounded-md border-cyan-300 max-w-xl mx-auto p-5 shadow-md`}>
@@ -17,7 +18,6 @@ export default function HomeCollapsible({user, clicked, setclicked, setvotes, up
                 <img src={user.posts.screenshot} className='mx-auto hover:cursor-pointer md:hover:scale-105 md:transform md:transition md:duration-200'
                      onClick={() => {
                       setView({user, clicked, setclicked, setvotes, updateVotes, filtercomments, comments, deletecomment, value, onchange, postcomment});
-                      console.log(view)
                      }}/> 
                 <h1 className='text-3xl font-semibold mt-5'>{user.posts.title}</h1>
                 <p className='text-md font-light mt-2'>{user.user_name}</p> 
@@ -51,7 +51,7 @@ export default function HomeCollapsible({user, clicked, setclicked, setvotes, up
                   </CollapsibleTrigger>
                 </div>               
                 
-                <CollapsibleContent className="flex flex-col gap-2">
+                <CollapsibleContent className="flex flex-col gap-2 max-h-48 overflow-y-scroll no-scrollbar">
                 <h1 className='mt-10 text-lg font-semibold text-cyan-300 w-full border p-2 rounded-md bg-slate-800'>Comments</h1>
                   {comments?.map((comments: Comments<number, string>) => {
                       if(user.id == comments.userId) return (
@@ -86,9 +86,9 @@ export default function HomeCollapsible({user, clicked, setclicked, setvotes, up
                                   onClick={() => {
                                     for (let i = 0; i<=comments?.length; i++) {
                                       if (user.id == comments[i]?.userId) {
-                                        const popped = comments?.pop()?.id!;
+                                        const popped = comments?.pop()?.id;
                                         // const ids = comments.length+1;
-                                        return postcomment(comments[i].userId, popped+1, value)
+                                        return postcomment(comments[i].userId, popped!+1, value)
                                       }
                                     }
                                   }}/>

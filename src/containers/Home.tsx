@@ -1,6 +1,5 @@
 import HomeCards from "@/components/Homepage/HomeCards"
 import HomeTweets from "@/components/Homepage/HomeTweets"
-import HomeView from "@/components/Homepage/HomeView";
 import { createContext, useState } from 'react'
 
 export const ViewContext = createContext({});

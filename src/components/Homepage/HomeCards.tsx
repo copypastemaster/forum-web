@@ -1,6 +1,6 @@
 import { useGetUser, useGetComments, updateVotes } from "@/services/query"
 import { UserTypes, Comments } from "@/types/types"
-import { useEffect, useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import axios from "axios"
 import HomeCollapsible from "./HomeCollapsible"
 import HomeView from "./HomeView"
@@ -15,7 +15,6 @@ export default function HomeCards() {
   const [clicked, setClicked] = useState<boolean>(false);
   const [input, setInput] = useState<string>('');
   const [viewInput, setViewInput] = useState<string>('');
-  const [display, setDisplay] = useState<React.Component>()
   
   const COMMENTS_ENDPOINT = 'http://localhost:3000/comments';
 
