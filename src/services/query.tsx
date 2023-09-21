@@ -19,14 +19,15 @@ export function useGetUser () {
 }
 
 export function useGetComments () {
-    const { isLoading, data, error } = useQuery('comments', () => {
+    const { isLoading, data, error, refetch } = useQuery('comments', () => {
         return axios.get(userComments).then(res => res.data);
     })
 
     return {
         isLoading, 
         data, 
-        error
+        error,
+        refetch
     }
 }
 

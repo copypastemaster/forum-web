@@ -13,7 +13,7 @@
         "summary": "My recent one! Car rental website where you can search, browse for luxury cars. Tech used: React, tailwind, zustand",
         "repo": "github.com.io/car-rental",
         "live_demo": "github.com.io/car-rental-live",
-        "upvote": 923
+        "upvote": 925
       }
     },
     {
@@ -29,7 +29,7 @@
         "summary": "practicing my tech stack. learners like me please feel free to collab to practice our git skills! :) ",
         "repo": "github.com.io/my_work",
         "live_demo": "github.com.io/my_work-live",
-        "upvote": 104
+        "upvote": 106
       }
     },
     {
@@ -99,11 +99,6 @@
       "userId": 3,
       "id": 10,
       "comment": "Use shad for ui much better! =)"
-    },
-    {
-      "userId": 1,
-      "id": 11,
-      "comment": "qweasd"
     }
   ]
 }

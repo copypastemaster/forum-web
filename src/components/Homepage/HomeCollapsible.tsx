@@ -45,13 +45,13 @@ export default function HomeCollapsible({user, clicked, setclicked, setvotes, up
                     
                     <p>{user.posts.upvote}</p>
                   </section> 
-                  <CollapsibleTrigger className='flex gap-1 hover: cursor-pointer'>
+                  <CollapsibleTrigger className='flex gap-1 hover:cursor-pointer hover:outline hover:outline-1 hover:outline-secondary'>
                     <MessageSquare size={18} className='mt-1'/>
                     <p> {filtercomments(user.id).length} </p>
                   </CollapsibleTrigger>
                 </div>               
                 
-                <CollapsibleContent className="flex flex-col gap-2 xl:hidden">
+                <CollapsibleContent className="flex flex-col gap-2">
                 <h1 className='mt-10 text-lg font-semibold text-cyan-300 w-full border p-2 rounded-md bg-slate-800'>Comments</h1>
                   {comments?.map((comments: Comments<number, string>) => {
                       if(user.id == comments.userId) return (
@@ -76,7 +76,7 @@ export default function HomeCollapsible({user, clicked, setclicked, setvotes, up
 
                 <div className="flex justify-between mt-2">
                   <input type='text'
-                        className='bg-transparent w-full mt-2 outline-none p-2 rounded-md' 
+                        className='bg-transparent w-full mt-2 outline-none p-2 rou nded-md' 
                         placeholder="write a comment..."
                         value={value}
                         onChange={onchange}/>
@@ -86,8 +86,9 @@ export default function HomeCollapsible({user, clicked, setclicked, setvotes, up
                                   onClick={() => {
                                     for (let i = 0; i<=comments?.length; i++) {
                                       if (user.id == comments[i]?.userId) {
-                                        const ids = comments.length+1;
-                                        return postcomment(comments[i].userId, ids, value)
+                                        const popped = comments?.pop()?.id!;
+                                        // const ids = comments.length+1;
+                                        return postcomment(comments[i].userId, popped+1, value)
                                       }
                                     }
                                   }}/>

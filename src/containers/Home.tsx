@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <ViewContext.Provider value={{view, setView}}>
-      <div className='mt-5 xl:ml-10 xl:flex xl:gap-56 '>
+      <div className='mt-5 xl:flex xl:gap-56 '>
         <HomeTweets />
         <HomeCards />
       </div>

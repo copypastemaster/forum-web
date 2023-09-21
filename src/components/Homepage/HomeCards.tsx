@@ -9,11 +9,12 @@ import { ViewContext } from "@/containers/Home"
 export default function HomeCards() {
 
   const { isLoading: userLoad, data: userData, error: userError } = useGetUser();
-  const { isLoading: commentsLoad, data: commentsData, error: commentsError } = useGetComments()
+  const { isLoading: commentsLoad, data: commentsData, error: commentsError, refetch } = useGetComments()
 
   const [vote, setVote] = useState(null);
   const [clicked, setClicked] = useState<boolean>(false);
   const [input, setInput] = useState<string>('');
+  const [viewInput, setViewInput] = useState<string>('');
   const [display, setDisplay] = useState<React.Component>()
   
   const COMMENTS_ENDPOINT = 'http://localhost:3000/comments';
@@ -22,7 +23,27 @@ export default function HomeCards() {
     setInput(e.target.value);
   }
 
+  const viewHandleChange = (e) => {
+    setViewInput(e.target.value);
+  }
+
   //post req
+  const postViewComment = async (userId: number, id: number, comment: string,) => {
+    try {
+      const data = await axios.post(COMMENTS_ENDPOINT, 
+        {
+          userId: userId, 
+          id: id, 
+          comment: comment
+        }).then(res => res.data);
+      setViewInput('');
+      refetch()
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   const postComment = async (userId: number, id: number, comment: string,) => {
     try {
       const data = await axios.post(COMMENTS_ENDPOINT, 
@@ -31,13 +52,12 @@ export default function HomeCards() {
           id: id, 
           comment: comment
         }).then(res => res.data);
-      console.log(data);
+      setInput('');
+      refetch()
       return data;
     } catch (e) {
       console.log(e);
     }
-    
-    setInput('');
   }
 
   //comments count
@@ -50,6 +70,7 @@ export default function HomeCards() {
       try {
         const delComment = await axios.delete(COMMENTS_ENDPOINT + '/' + id)
         const delData = await delComment.data;
+        refetch();
         return delData;
       } catch (err) {
         console.log(err)
@@ -79,7 +100,7 @@ export default function HomeCards() {
       })}
 
       {view == undefined ? null : 
-        <HomeView user={view?.user}  clicked={clicked} setclicked={setClicked} setvotes={setVote} updateVotes={updateVotes} filtercomments={filterComments} comments={commentsData} deletecomment={deleteComment} value={input} onchange={handleChange} postcomment={postComment}
+        <HomeView user={view?.user}  clicked={clicked} setclicked={setClicked} setvotes={setVote} updateVotes={updateVotes} filtercomments={filterComments} comments={commentsData} deletecomment={deleteComment} value={viewInput} onchange={viewHandleChange} postcomment={postViewComment}
       />
       }
        
